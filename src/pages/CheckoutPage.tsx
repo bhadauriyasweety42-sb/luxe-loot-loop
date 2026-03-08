@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShop } from '@/context/ShopContext';
 import Navbar from '@/components/Navbar';
 import { CreditCard, Banknote, Smartphone, ChevronRight, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { playSuccessSound } from '@/lib/sounds';
+import confetti from 'canvas-confetti';
 
 const paymentMethods = [
   { id: 'card', label: 'Credit / Debit Card', icon: CreditCard },
@@ -53,6 +54,16 @@ const CheckoutPage = () => {
     setOrderPlaced(true);
     clearCart();
     playSuccessSound();
+    
+    // Fire confetti
+    const duration = 2000;
+    const end = Date.now() + duration;
+    const fire = () => {
+      confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: ['#16a34a', '#22c55e', '#4ade80', '#fbbf24', '#f59e0b'] });
+      if (Date.now() < end) requestAnimationFrame(fire);
+    };
+    fire();
+
     toast.success('Order placed successfully! 🎉', {
       style: { background: '#16a34a', color: '#ffffff', border: 'none' },
     });
@@ -65,7 +76,7 @@ const CheckoutPage = () => {
 
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-background">
+       <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #86efac 100%)' }}>
         <Navbar />
         <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
           <CheckCircle className="h-24 w-24 text-accent mb-6" />
