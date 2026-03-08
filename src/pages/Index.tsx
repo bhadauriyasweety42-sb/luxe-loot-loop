@@ -14,31 +14,12 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroBanner} alt="Fashion collection" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-foreground/40" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:py-44">
-          <div className="max-w-lg">
-            <h1 className="font-display text-5xl font-bold text-primary-foreground sm:text-6xl leading-tight">
-              Elevate Your Style
-            </h1>
-            <p className="mt-4 text-lg text-primary-foreground/80">
-              Curated fashion, shoes & skincare — handpicked for the modern you.
-            </p>
-            <div className="mt-8 flex gap-4">
-              <Link to="/dashboard"
-                className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90 transition-colors">
-                Shop Now <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10 transition-colors">
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </div>
+      <section className="relative w-full">
+        <img 
+          src={heroBanner} 
+          alt="Fashion collection" 
+          className="w-full h-[500px] sm:h-[600px] lg:h-[700px] object-cover" 
+        />
       </section>
 
       {/* Featured Products */}
