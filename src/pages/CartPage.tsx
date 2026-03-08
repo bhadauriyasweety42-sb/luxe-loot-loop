@@ -124,11 +124,11 @@ const CartPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Discount</span>
-                    <span className="text-green-600">- ₹0</span>
+                    <span className="text-accent">- ₹0</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Delivery Fee</span>
-                    <span className="text-green-600">FREE</span>
+                    <span className="text-accent">FREE</span>
                   </div>
                   <div className="border-t border-border pt-3 flex justify-between font-bold text-foreground">
                     <span>Total Amount</span>
