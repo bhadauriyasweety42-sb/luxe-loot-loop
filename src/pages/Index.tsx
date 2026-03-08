@@ -102,23 +102,23 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-secondary-foreground mb-4">For Her</h4>
+              <h4 className="font-bold text-secondary-foreground mb-4">Clothes</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Jeans</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Tops and Shirts</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Jackets</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Heels and Flats</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Accessories</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Leather Jacket</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Summer Dress</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Denim Jeans</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Cashmere Sweater</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Silk Blouse</span></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-secondary-foreground mb-4">For Him</h4>
+              <h4 className="font-bold text-secondary-foreground mb-4">Shoes & Skincare</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Jeans</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Shirts</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Shoes</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Accessories</span></li>
-                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Jackets</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">White Sneakers</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Running Shoes</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Stiletto Pumps</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Glow Revive Serum</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Moisturizer</span></li>
               </ul>
             </div>
             <div>
