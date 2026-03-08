@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
 import emptyCartImg from '@/assets/empty-cart.png';
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   const {
@@ -139,9 +140,12 @@ const CartPage = () => {
                     <span>₹{total.toLocaleString()}</span>
                   </div>
                 </div>
-                <button className="mt-5 w-full rounded-md bg-accent py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90 transition-colors">
+                <Link 
+                  to="/checkout"
+                  className="mt-5 w-full block text-center rounded-md bg-accent py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90 transition-colors"
+                >
                   PLACE ORDER
-                </button>
+                </Link>
               </div>
             </div>
           </div>

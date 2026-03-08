@@ -31,6 +31,7 @@ interface ShopContextType {
   getCartItems: () => CartItem[];
   calculateTotal: () => number;
   getCartCount: () => number;
+  clearCart: () => void;
   
   // Wishlist operations using Hash Table
   addToWishlist: (productId: string) => void;
@@ -177,6 +178,19 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return cartTable.getAll().reduce((sum, [, item]) => sum + item.quantity, 0);
   }, [cartTable]);
 
+  const clearCart = useCallback(() => {
+    // Restore all stock before clearing
+    cartTable.getAll().forEach(([id, item]) => {
+      const product = productTable.get(id);
+      if (product) {
+        product.stock += item.quantity;
+        productTable.set(id, product);
+      }
+    });
+    cartTable.clear();
+    bump();
+  }, [cartTable, productTable, bump]);
+
   // ─── Wishlist Operations (Hash Table) ───
   const addToWishlist = useCallback((productId: string) => {
     const product = productTable.get(productId);
@@ -230,7 +244,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <ShopContext.Provider value={{
       getProduct, getAllProducts,
       addToCart, removeFromCart, increaseQuantity, decreaseQuantity,
-      getCartItems, calculateTotal, getCartCount,
+      getCartItems, calculateTotal, getCartCount, clearCart,
       addToWishlist, removeFromWishlist, getWishlistItems, moveToCart, isInWishlist,
       getMostExpensiveItem, getAveragePrice,
       isLoggedIn, username, login, logout
