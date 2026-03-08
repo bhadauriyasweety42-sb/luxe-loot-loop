@@ -66,9 +66,6 @@ const CheckoutPage = () => {
     };
     fire();
 
-    toast.success('Order placed successfully! 🎉', {
-      style: { background: '#16a34a', color: '#ffffff', border: 'none' },
-    });
   };
 
   if (items.length === 0 && !orderPlaced) {
