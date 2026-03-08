@@ -55,11 +55,13 @@ const CheckoutPage = () => {
     clearCart();
     playSuccessSound();
     
-    // Fire confetti
-    const duration = 2000;
+    // Fire confetti from bottom-left and bottom-right corners
+    const duration = 2500;
     const end = Date.now() + duration;
+    const colors = ['#16a34a', '#22c55e', '#4ade80', '#fbbf24', '#f59e0b', '#ffffff'];
     const fire = () => {
-      confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: ['#16a34a', '#22c55e', '#4ade80', '#fbbf24', '#f59e0b'] });
+      confetti({ particleCount: 40, angle: 60, spread: 55, origin: { x: 0, y: 1 }, colors });
+      confetti({ particleCount: 40, angle: 120, spread: 55, origin: { x: 1, y: 1 }, colors });
       if (Date.now() < end) requestAnimationFrame(fire);
     };
     fire();
