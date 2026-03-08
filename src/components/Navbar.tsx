@@ -1,7 +1,15 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Heart, LogOut, Menu, X, Search } from 'lucide-react';
+import { ShoppingCart, Heart, LogOut, Menu, X, Search, LayoutGrid, Shirt, Footprints, Sparkles, Watch } from 'lucide-react';
 import { useShop } from '@/context/ShopContext';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
+
+const categories = [
+  { id: 'all', label: 'All Products', icon: LayoutGrid },
+  { id: 'clothes', label: 'Clothes', icon: Shirt },
+  { id: 'shoes', label: 'Shoes', icon: Footprints },
+  { id: 'skincare', label: 'Skincare', icon: Sparkles },
+  { id: 'accessories', label: 'Accessories', icon: Watch },
+];
 
 const Navbar = () => {
   const { getCartCount, getWishlistItems, isLoggedIn, logout, getAllProducts } = useShop();
@@ -9,6 +17,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [categoryOpen, setCategoryOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const cartCount = getCartCount();
@@ -17,6 +26,15 @@ const Navbar = () => {
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleCategoryClick = (categoryId: string) => {
+    setCategoryOpen(false);
+    if (categoryId === 'all') {
+      navigate('/dashboard');
+    } else {
+      navigate(`/dashboard?category=${categoryId}`);
+    }
   };
 
   const allProducts = getAllProducts();
@@ -53,9 +71,38 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Categories */}
+          <div className="relative">
+            <button 
+              onClick={() => { setCategoryOpen(!categoryOpen); setSearchOpen(false); }} 
+              className="p-2 text-foreground hover:text-accent transition-colors"
+              title="Categories"
+            >
+              <LayoutGrid className="h-5 w-5" />
+            </button>
+            {categoryOpen && (
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-md border bg-background shadow-lg py-2">
+                <p className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Shop by Category</p>
+                {categories.map(cat => {
+                  const Icon = cat.icon;
+                  return (
+                    <button
+                      key={cat.id}
+                      onClick={() => handleCategoryClick(cat.id)}
+                      className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                    >
+                      <Icon className="h-4 w-4 text-accent" />
+                      {cat.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           {/* Search */}
           <div className="relative">
-            <button onClick={() => setSearchOpen(!searchOpen)} className="p-2 text-foreground hover:text-accent transition-colors">
+            <button onClick={() => { setSearchOpen(!searchOpen); setCategoryOpen(false); }} className="p-2 text-foreground hover:text-accent transition-colors">
               <Search className="h-5 w-5" />
             </button>
             {searchOpen && (
@@ -155,6 +202,22 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
+          <div className="border-t mt-2 pt-2">
+            <p className="py-2 text-xs font-semibold text-muted-foreground uppercase">Categories</p>
+            {categories.map(cat => {
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => { handleCategoryClick(cat.id); setMenuOpen(false); }}
+                  className="flex w-full items-center gap-3 py-2 text-sm text-foreground hover:text-accent"
+                >
+                  <Icon className="h-4 w-4" />
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
     </nav>
