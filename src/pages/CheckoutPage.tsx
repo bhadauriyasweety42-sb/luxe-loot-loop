@@ -76,7 +76,7 @@ const CheckoutPage = () => {
 
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-background">
+       <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #86efac 100%)' }}>
         <Navbar />
         <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
           <CheckCircle className="h-24 w-24 text-accent mb-6" />
