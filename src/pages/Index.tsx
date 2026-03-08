@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
 import { useShop } from '@/context/ShopContext';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe, Bell, Diamond, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroBanner from '@/assets/hero-banner.jpg';
 
