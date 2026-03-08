@@ -181,4 +181,15 @@ export class HashTable<T> {
   has(key: string): boolean {
     return this.get(key) !== undefined;
   }
+
+  /**
+   * CLEAR - Removes all entries from the hash table.
+   * Resets each bucket to an empty array.
+   */
+  clear(): void {
+    for (let i = 0; i < this.size; i++) {
+      this.table[i] = [];
+    }
+    this.count = 0;
+  }
 }
