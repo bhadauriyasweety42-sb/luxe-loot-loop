@@ -4,6 +4,7 @@ import { useShop } from '@/context/ShopContext';
 import Navbar from '@/components/Navbar';
 import { CreditCard, Banknote, Smartphone, ChevronRight, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { playSuccessSound } from '@/lib/sounds';
 
 const paymentMethods = [
   { id: 'card', label: 'Credit / Debit Card', icon: CreditCard },
