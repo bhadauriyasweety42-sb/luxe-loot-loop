@@ -14,7 +14,7 @@ const ContactPage = () => {
       toast.error('Please fill in all fields');
       return;
     }
-    toast.success('Message sent! We'll get back to you soon.');
+    toast.success('Message sent! We will get back to you soon.');
     setName('');
     setEmail('');
     setMessage('');
