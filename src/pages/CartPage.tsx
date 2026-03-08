@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
 import emptyCartImg from '@/assets/empty-cart.png';
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   const {
