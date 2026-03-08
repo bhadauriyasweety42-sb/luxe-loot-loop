@@ -52,6 +52,7 @@ const CheckoutPage = () => {
     }
     setOrderPlaced(true);
     clearCart();
+    playSuccessSound();
   };
 
   if (items.length === 0 && !orderPlaced) {
