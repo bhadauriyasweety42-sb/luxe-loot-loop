@@ -60,14 +60,23 @@ const Navbar = () => {
             </button>
             {searchOpen && (
               <div className="absolute right-0 top-full mt-2 w-72 rounded-md border bg-background shadow-lg">
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  if (searchQuery.trim()) {
+                    navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+                    setSearchOpen(false);
+                    setSearchQuery('');
+                  }
+                }}>
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search products... (press Enter)"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   autoFocus
                   className="w-full rounded-t-md border-b bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none"
                 />
+                </form>
                 {filteredProducts.length > 0 && (
                   <ul className="max-h-60 overflow-y-auto py-1">
                     {filteredProducts.map(p => (
