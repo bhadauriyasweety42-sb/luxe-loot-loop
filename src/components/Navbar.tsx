@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Heart, LogOut, Menu, X, Search } from 'lucide-react';
 import { useShop } from '@/context/ShopContext';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const Navbar = () => {
   const { getCartCount, getWishlistItems, isLoggedIn, logout, getAllProducts } = useShop();
