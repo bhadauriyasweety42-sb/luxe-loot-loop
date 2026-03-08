@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShop } from '@/context/ShopContext';
 import Navbar from '@/components/Navbar';
 import { CreditCard, Banknote, Smartphone, ChevronRight, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { playSuccessSound } from '@/lib/sounds';
+import confetti from 'canvas-confetti';
 
 const paymentMethods = [
   { id: 'card', label: 'Credit / Debit Card', icon: CreditCard },
