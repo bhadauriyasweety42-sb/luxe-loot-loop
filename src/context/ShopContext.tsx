@@ -244,7 +244,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <ShopContext.Provider value={{
       getProduct, getAllProducts,
       addToCart, removeFromCart, increaseQuantity, decreaseQuantity,
-      getCartItems, calculateTotal, getCartCount,
+      getCartItems, calculateTotal, getCartCount, clearCart,
       addToWishlist, removeFromWishlist, getWishlistItems, moveToCart, isInWishlist,
       getMostExpensiveItem, getAveragePrice,
       isLoggedIn, username, login, logout
