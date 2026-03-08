@@ -31,6 +31,7 @@ interface ShopContextType {
   getCartItems: () => CartItem[];
   calculateTotal: () => number;
   getCartCount: () => number;
+  clearCart: () => void;
   
   // Wishlist operations using Hash Table
   addToWishlist: (productId: string) => void;
