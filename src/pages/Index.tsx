@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
 import { useShop } from '@/context/ShopContext';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe, Bell, Diamond, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroBanner from '@/assets/hero-banner.jpg';
 
@@ -59,17 +59,79 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t bg-secondary">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="font-display text-xl font-bold text-secondary-foreground">LUXE<span className="text-accent">.</span></p>
-            <div className="flex gap-6 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-accent">Home</Link>
-              <Link to="/dashboard" className="hover:text-accent">Products</Link>
-              <Link to="/contact" className="hover:text-accent">Contact</Link>
+      {/* Features Bar */}
+      <section className="bg-[hsl(var(--secondary))] border-t border-border/50">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+            <div className="flex flex-col items-center text-center gap-3">
+              <Globe className="h-10 w-10 text-muted-foreground" />
+              <h3 className="font-semibold text-secondary-foreground">Worldwide Shipping</h3>
+              <p className="text-sm text-muted-foreground">Fast delivery to your doorstep globally.</p>
             </div>
-            <p className="text-xs text-muted-foreground">© 2026 LUXE. All rights reserved.</p>
+            <div className="flex flex-col items-center text-center gap-3">
+              <Bell className="h-10 w-10 text-muted-foreground" />
+              <h3 className="font-semibold text-secondary-foreground">Best Quality</h3>
+              <p className="text-sm text-muted-foreground">Premium materials, crafted with care.</p>
+            </div>
+            <div className="flex flex-col items-center text-center gap-3">
+              <Diamond className="h-10 w-10 text-muted-foreground" />
+              <h3 className="font-semibold text-secondary-foreground">Best Offers</h3>
+              <p className="text-sm text-muted-foreground">Competitive prices and seasonal deals.</p>
+            </div>
+            <div className="flex flex-col items-center text-center gap-3">
+              <ShieldCheck className="h-10 w-10 text-muted-foreground" />
+              <h3 className="font-semibold text-secondary-foreground">Secure Payments</h3>
+              <p className="text-sm text-muted-foreground">Your transactions are safe and encrypted.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[hsl(var(--secondary))] border-t border-border/50">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+            <div>
+              <h4 className="font-bold text-secondary-foreground mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link to="/" className="hover:text-accent transition-colors">Home</Link></li>
+                <li><Link to="/dashboard" className="hover:text-accent transition-colors">About</Link></li>
+                <li><Link to="/login" className="hover:text-accent transition-colors">My Account</Link></li>
+                <li><Link to="/dashboard" className="hover:text-accent transition-colors">Cart</Link></li>
+                <li><Link to="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-secondary-foreground mb-4">For Her</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Jeans</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Tops and Shirts</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Jackets</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Heels and Flats</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Women Accessories</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-secondary-foreground mb-4">For Him</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Jeans</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Shirts</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Shoes</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Accessories</span></li>
+                <li><span className="hover:text-accent transition-colors cursor-pointer">Men Jackets</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-secondary-foreground mb-4">LUXE</h4>
+              <p className="text-sm text-muted-foreground">
+                Demonstrating Hash Table usage in an online shopping cart system with separate chaining.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-border/50">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 text-center">
+            <p className="text-sm text-muted-foreground">© 2026 LUXE. All rights reserved.</p>
           </div>
         </div>
       </footer>
