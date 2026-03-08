@@ -2,6 +2,8 @@ import { ShoppingCart, Trash2 } from 'lucide-react';
 import { useShop } from '@/context/ShopContext';
 import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
+import emptyWishlistImg from '@/assets/empty-wishlist.png';
+import { useMemo, useState } from 'react';
 
 const WishlistPage = () => {
   const { getWishlistItems, removeFromWishlist, moveToCart, getAllProducts } = useShop();
@@ -9,9 +11,23 @@ const WishlistPage = () => {
   const items = getWishlistItems();
   const allProducts = getAllProducts();
 
-  // Recommendations: products not in wishlist
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+
+  // Shuffle and exclude wishlist items
   const wishlistIds = new Set(items.map(i => i.id));
-  const recommendations = allProducts.filter(p => !wishlistIds.has(p.id)).slice(0, 8);
+  const shuffled = useMemo(() => {
+    const filtered = allProducts.filter(p => !wishlistIds.has(p.id));
+    return [...filtered].sort(() => Math.random() - 0.5);
+  }, [allProducts, wishlistIds.size]);
+
+  const categories = useMemo(() => {
+    const cats = Array.from(new Set(shuffled.map(p => p.category)));
+    return ['All', ...cats];
+  }, [shuffled]);
+
+  const recommendations = activeCategory === 'All'
+    ? shuffled
+    : shuffled.filter(p => p.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,9 +42,14 @@ const WishlistPage = () => {
         </p>
 
         {items.length === 0 ? (
-          <div className="rounded-lg bg-card p-12 text-center shadow-card">
-            <p className="text-xl font-medium text-foreground mb-2">Your wishlist is empty</p>
-            <p className="text-muted-foreground">Save items you love to buy them later!</p>
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <img src={emptyWishlistImg} alt="Empty wishlist" className="h-52 w-52 object-contain mb-6" />
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+              No wishes yet! 💔
+            </h2>
+            <p className="text-muted-foreground max-w-md">
+              This puppy needs some love! Start adding items you adore and come back later.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -65,10 +86,25 @@ const WishlistPage = () => {
           </div>
         )}
 
-        {/* You may also like */}
+        {/* You may also like with category tabs */}
         {recommendations.length > 0 && (
-          <div className="mt-12">
-            <h2 className="font-display text-xl font-bold text-foreground mb-6">You may also like</h2>
+          <div className="mt-12 border-t border-border pt-8">
+            <h2 className="font-display text-xl font-bold text-foreground mb-4">You may also like</h2>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`rounded-full border px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
+                    activeCategory === cat
+                      ? 'border-accent bg-accent/10 text-accent'
+                      : 'border-border text-muted-foreground hover:border-foreground hover:text-foreground'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {recommendations.map(product => (
                 <ProductCard key={product.id} product={product} />
